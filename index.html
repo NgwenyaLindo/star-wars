@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starwars who</title>
+     <link rel="icon" type="image/x-icon" href="darthvader.ico">
+    <style>
+body{
+    box-sizing: border-box;
+    height: 768px;
+    text-align: center;
+    background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.8)), url(star.jpg);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+   
+}
+div.title{
+    font-size: 100px;
+    color: white;
+    text-shadow: 10px 10px 5px black;
+    
+}
+img{
+margin-top: 100px;
+width: 200px;
+height: 200px;
+box-shadow: 10px 10px 5px black;
+background-color: black;
+
+}
+h1{
+color: white;
+
+}
+button{
+margin-bottom: 150px;
+height: 50px;
+width: 200px;
+box-shadow: 3px black;
+background-color: black;
+color: white;
+}
+
+    </style>
+</head>
+<body>
+
+    <div>
+        <div class="title">Starwars who</div>
+        <img src="" alt="" class="Char-img">
+        <h1 class="name"></h1>
+        <button >Random Character</button>
+     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+
+    <script>
+       
+       $(document).ready(function(){
+
+        $("button").on("click", function() {
+            const randomNumber = Math.ceil(Math.random() * 88)
+        $.get(`https://rawcdn.githack.com/akabab/starwars-api/0.2.1/api/id/${randomNumber}.json`,function(data){
+        //accesses data from the website by their key
+            $("h1.name").text(data['name'])
+            $(".Char-img").attr("src",data['image'])
+        })
+           
+            })
+        })
+    </script>
+</body>
+</html>
